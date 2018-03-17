@@ -78,7 +78,7 @@ class ImageDataGenerator(object):
                 x_list.append(x)
                 y_list.append(label)
 
-            out_list.append((x_list, y_list))
+            out_list.append((np.array(x_list), np.array(y_list)))
 
         return out_list
 
@@ -123,6 +123,7 @@ class ImageDataGenerator(object):
             sys.exit()
 
         label = cv2.resize(label, (self.out_width, self.out_height))
+        label = label[:, :, None] # 2ch to 3ch
         return np.float32(label)
 
 
