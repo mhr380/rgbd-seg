@@ -25,8 +25,8 @@ def main():
     #
     # params
     #
-    height = 240
-    width = 320
+    height = 480
+    width = 640
     ch = 4  # (B, G, R, D)
     class_num = 14
     batch_num = 16
@@ -36,7 +36,7 @@ def main():
     #
     loader = ImageDataGenerator()
 
-    (x_train, y_train), (x_test, y_test) = loader.flow_from_directory('data_tmp', height=240, width=320)
+    (x_train, y_train), (x_test, y_test) = loader.flow_from_directory('data_tmp', height=height, width=width)
     # dnum, height, width, ch
 
     #
