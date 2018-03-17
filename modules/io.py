@@ -24,13 +24,19 @@ class ImageDataGenerator(object):
         self.dirname = None
         self.reset()
 
+        self.out_height = 480
+        self.out_width = 640
+
+
     def reset(self):
         self.images = []
         self.labels = []
 
-    def flow_from_directory(self, dirname, batch_size=32):
+    def flow_from_directory(self, dirname, height=480, width=640, batch_size=32):
 
         self.dirname = dirname
+        self.out_height = height
+        self.out_width = width
 
         out_list = []
         for state in ['train', 'test']:
@@ -93,6 +99,7 @@ class ImageDataGenerator(object):
             sys.exit()
 
         depth = np.float32(depth_16bit) / float(self.__bit16) * depth_max
+        depth = cv2.resize(depth, (self.out_width, self.out_height))
         print(depth.shape)
         return depth
 
@@ -104,6 +111,7 @@ class ImageDataGenerator(object):
             sys.exit()
 
         image = np.float32(image_8bit) / float(self.__bit8) * image_max
+        image = cv2.resize(image, (self.out_width, self.out_height))
 
         return image
 
@@ -114,6 +122,7 @@ class ImageDataGenerator(object):
             print('Load Error: {}'.format(filename))
             sys.exit()
 
+        label = cv2.resize(label, (self.out_width, self.out_height))
         return np.float32(label)
 
 
