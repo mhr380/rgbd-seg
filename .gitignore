@@ -1,1 +1,4 @@
 data/*
+!/data/.gitkeep
+
+memo.md
