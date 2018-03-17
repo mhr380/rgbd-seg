@@ -15,6 +15,8 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 
+from keras.utils import np_utils
+
 
 class ImageDataGenerator(object):
     def __init__(self):
@@ -124,7 +126,9 @@ class ImageDataGenerator(object):
 
         label = cv2.resize(label, (self.out_width, self.out_height))
         label = label[:, :, None] # 2ch to 3ch
-        return np.float32(label)
+
+        label_onehot = np_utils.to_categorical(label, 14)
+        return np.float32(label_onehot)
 
 
 if __name__ == '__main__':
