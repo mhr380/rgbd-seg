@@ -3,3 +3,9 @@ data/*
 
 memo.md
 modules/.vscode/tasks.json
+
+/.vscode/
+/data_tmp/
+
+modules/*.pyc
+*.pyc
