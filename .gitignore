@@ -9,3 +9,5 @@ modules/.vscode/tasks.json
 
 modules/*.pyc
 *.pyc
+
+*.h5
